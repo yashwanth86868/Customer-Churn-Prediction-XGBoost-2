@@ -62,6 +62,31 @@ model = Pipeline([
 # 8. Train the model
 model.fit(X_train, y_train)
 
+
+
+
+
+import pickle
+from pathlib import Path
+
+# Find the folder containing train_model.py
+BASE_DIR = Path(__file__).resolve().parent
+
+# Create models folder if it doesn't exist
+MODEL_DIR = BASE_DIR / "models"
+MODEL_DIR.mkdir(parents=True, exist_ok=True)
+
+# Define model file path
+MODEL_PATH = MODEL_DIR / "churn_model.pkl"
+
+# Save trained model
+with open(MODEL_PATH, "wb") as file:
+    pickle.dump(model, file)
+
+print("Model saved successfully!")
+print("Saved at:", MODEL_PATH)
+print("File size:", MODEL_PATH.stat().st_size, "bytes")
+
 print("Model training completed!")
 
 # 9. Predict test data
@@ -96,3 +121,27 @@ accuracies = cross_val_score(
 print("\nCross Validation Results:")
 print("Mean Accuracy: {:.2f}%".format(accuracies.mean() * 100))
 print("Standard Deviation: {:.2f}%".format(accuracies.std() * 100))
+
+
+
+import pickle
+
+# Save the trained model
+with open("churn_model.pkl", "wb") as file:
+    pickle.dump(model, file)
+
+print("Model saved successfully!")
+
+
+
+import pickle
+
+with open("churn_model.pkl", "rb") as file:
+    loaded_model = pickle.load(file)
+
+print("Model loaded successfully!")
+
+
+predictions = loaded_model.predict(X_test)
+
+print(predictions[:10])

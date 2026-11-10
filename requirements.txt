@@ -1,6 +1,8 @@
-
 numpy
 pandas
 scikit-learn
 xgboost
-matplotlib
+fastapi
+uvicorn
+streamlit
+requests
