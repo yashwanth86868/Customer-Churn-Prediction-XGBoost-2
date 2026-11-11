@@ -16,7 +16,7 @@ st.write("Predict whether a bank customer is likely to leave.")
 st.divider()
 
 # FastAPI backend URL
-API_URL = "http://127.0.0.1:8000/predict"
+API_URL = "https://customer-churn-prediction-xgboost-2.onrender.com/predict"
 
 # Customer input form
 st.subheader("Enter Customer Details")
