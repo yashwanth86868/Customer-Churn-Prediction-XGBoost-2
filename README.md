@@ -1,78 +1,131 @@
+# Customer Churn Prediction Using XGBoost
 
-# Customer Churn Prediction using XGBoost
+An end-to-end Machine Learning application that predicts whether a bank customer is likely to leave the bank using an XGBoost classification model.
 
 ## Project Overview
 
-This project predicts whether a bank customer
-will leave the bank using Machine Learning.
+Customer churn is an important challenge for banks. This project uses customer information to predict the likelihood of customer attrition and helps identify customers who may need retention strategies.
 
-An XGBoost Classifier is used to train the
-model and predict customer churn.
+The trained model is deployed through a FastAPI backend and a Streamlit frontend.
 
-## Technologies Used
+## Live Demo
+
+- **Frontend:** https://customer-churn-prediction-xgboost-2-1.onrender.com
+- **Backend API:** https://customer-churn-prediction-xgboost-2.onrender.com
+- **API Documentation:** https://customer-churn-prediction-xgboost-2.onrender.com/docs
+
+## Technology Stack
 
 - Python
-- Pandas
-- NumPy
+- Pandas and NumPy
 - Scikit-learn
 - XGBoost
-- Matplotlib
+- FastAPI
+- Streamlit
+- Docker
+- Pytest
+- GitHub Actions
+- Render Cloud
 
 ## Machine Learning Workflow
 
-1. Data Loading
-2. Data Preprocessing
-3. One-Hot Encoding
-4. Train-Test Split
-5. XGBoost Model Training
-6. Model Prediction
-7. Model Evaluation
-8. Cross Validation
+1. Load and understand the customer churn dataset.
+2. Perform data preprocessing.
+3. Encode categorical features using OneHotEncoder.
+4. Split data into training and testing sets.
+5. Train the XGBoost classification model.
+6. Evaluate model performance.
+7. Save the trained preprocessing and model pipeline using Pickle.
 
-## Algorithm
+## Application Architecture
 
+```text
+User
+  |
+  v
+Streamlit Frontend
+  |
+  v
+FastAPI REST API
+  |
+  v
+Preprocessing Pipeline
+  |
+  v
 XGBoost Classifier
+  |
+  v
+Churn Prediction
+```
 
-## Evaluation Metrics
+## Features
 
-- Confusion Matrix
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-- Cross Validation
+- Customer information input form.
+- Real-time prediction through REST API.
+- Customer stay or leave prediction.
+- Churn probability estimation.
+- Cloud-hosted frontend and backend.
 
-## Project Structure
-
-Customer-Churn-Prediction-XGBoost/
-
-- dataset/
-- churn_prediction.py
-- requirements.txt
-- README.md
-- .gitignore
-
-## Installation
+## Run Locally
 
 Clone the repository:
 
-git clone YOUR_GITHUB_REPOSITORY_URL
+```bash
+git clone https://github.com/yashwanth86868/Customer-Churn-Prediction-XGBoost-2.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd Customer-Churn-Prediction-XGBoost-2
+```
 
 Install dependencies:
 
+```bash
 pip install -r requirements.txt
+```
 
-Run the project:
+Start FastAPI:
 
-python churn_prediction.py
+```bash
+uvicorn main:app --reload
+```
 
-## Dataset
+Start Streamlit in another terminal:
 
-Churn Modelling dataset.
+```bash
+streamlit run app.py
+```
 
-Place the downloaded CSV file inside the
-dataset folder as Churn_Modelling.csv.
+Open the application at:
+
+`http://localhost:8501`
+
+API documentation:
+
+`http://localhost:8000/docs`
+
+## Automated Testing and CI
+
+This project uses Pytest for automated API testing and GitHub Actions for Continuous Integration.
+
+Tests run automatically when code is pushed to the main branch or a pull request is created.
+
+## Docker
+
+The project includes a Dockerfile and Compose configuration for containerized execution.
+
+## Future Improvements
+
+- Model performance monitoring.
+- Input validation and improved error handling.
+- Model explainability using SHAP.
+- Model versioning and experiment tracking.
+- Enhanced deployment automation.
 
 ## Author
 
-Yashwanth
+Yashwanth Balija
+
+GitHub: https://github.com/yashwanth86868
